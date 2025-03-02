@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>显示webp图片</title>
+    <style>
+      a {
+        color: #ffb6498c;
+        /* 设置链接颜色 */
+        text-decoration: none;
+        /* 移除下划线 */
+      }
+
+      a:hover {
+        color: #f79e18;
+        /* 鼠标悬停时的颜色 */
+        text-decoration: underline;
+        /* 鼠标悬停时添加下划线 */
+      }
+
+      a:active {
+        color: #c4961a;
+        /* 链接被点击时的颜色 */
+      }
+
+      body {
+        font-family: sans-serif;
+      }
+
+      .image-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .image-container img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>
+      凑活用吧<br />内容由<a href="https://18comic.vip/">JM</a>提供<br /><a
+        href="https://18comic.vip/photo/1062501"
+        >原文地址</a
+      >
+    </h1>
+
+    <div class="image-container" id="imageContainer"></div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const imageFilenames = [
+          "00001.webp",
+          "00002.webp",
+          "00003.webp",
+          "00004.webp",
+          "00005.webp",
+          "00006.webp",
+          "00007.webp",
+          "00008.webp",
+          "00009.webp",
+          "00010.webp",
+          "00011.webp",
+          "00012.webp",
+          "00013.webp",
+          "00014.webp",
+          "00015.webp",
+          "00016.webp",
+          "00017.webp",
+          "00018.webp",
+          "00019.webp",
+          "00020.webp",
+          "00021.webp",
+          "00022.webp",
+          "00023.webp",
+          "00024.webp",
+          "00025.webp",
+          "00026.webp",
+          "00027.webp",
+          "00028.webp",
+          "00029.webp",
+          "00030.webp",
+          "00031.webp",
+          "00032.webp",
+          "00033.webp",
+          "00034.webp",
+          "00035.webp",
+          "00036.webp",
+          "00037.webp",
+          "00038.webp",
+          "00039.webp",
+          "00040.webp",
+          "00041.webp",
+          "00042.webp",
+          "00043.webp",
+          "00044.webp",
+          "00045.webp",
+          "00046.webp",
+          "00047.webp",
+          "00048.webp",
+          "00049.webp",
+          "00050.webp",
+          "00051.webp",
+          "00052.webp",
+          "00053.webp",
+          "00054.webp",
+          "00055.webp",
+          "00056.webp",
+          "00057.webp",
+          "00058.webp",
+          "00059.webp",
+          "00060.webp",
+          "00061.webp",
+          "00062.webp",
+          "00063.webp",
+          "00064.webp",
+          "00065.webp",
+          "00066.webp",
+          "00067.webp",
+          "00068.webp",
+          "00069.webp",
+          "00070.webp",
+          "00071.webp",
+          "00072.webp",
+          "00073.webp",
+          "00074.webp",
+          "00075.webp",
+          "00076.webp",
+          "00077.webp",
+          "00078.webp",
+          "00079.webp",
+          "00080.webp",
+          "00081.webp",
+          "00082.webp",
+          "00083.webp",
+          "00084.webp",
+          "00085.webp",
+          "00086.webp",
+          "00087.webp",
+          "00088.webp",
+          "00089.webp",
+          "00090.webp",
+          "00091.webp",
+          "00092.webp",
+          "00093.webp",
+          "00094.webp",
+          "00095.webp",
+          "00096.webp",
+          "00097.webp",
+          "00098.webp",
+          "00099.webp",
+          "00100.webp",
+          "00101.webp",
+          "00102.webp",
+          "00103.webp",
+          "00104.webp",
+          "00105.webp",
+          "00106.webp",
+          "00107.webp",
+          "00108.webp",
+          "00109.webp",
+          "00110.webp",
+          "00111.webp",
+          "00112.webp",
+        ];
+
+        const imageContainer = document.getElementById("imageContainer");
+
+        imageFilenames.sort(function (a, b) {
+          const numA = parseInt(a.replace(".webp", ""));
+          const numB = parseInt(b.replace(".webp", ""));
+          return numA - numB;
+        });
+
+        imageFilenames.forEach(function (filename) {
+          const img = document.createElement("img");
+          img.src = "webp/" + filename;
+          img.alt = "服务器好像死了，也可能是你网络的问题";
+          imageContainer.appendChild(img);
+        });
+      });
+    </script>
+  </body>
+</html>
