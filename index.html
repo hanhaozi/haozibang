@@ -1,73 +1,228 @@
 <!DOCTYPE html>
 <html lang="zh">
-  <head>
+<head>
+    <!-- 基础元数据 -->
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=100, initial-scale=1.0" />
-    <title>耗子帮</title>
-    <!--标签页图标-->
+    <!-- 关键的视口元标签，用于响应式设计，确保在移动设备上以正确的比例显示 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>耗子帮 - 官方喜讯</title>
+    <!-- 网站标签页图标 -->
     <link rel="icon" href="./file/logo.ico" />
-    <!-- CSS -->
+
+    <!-- 内嵌CSS样式 -->
     <style>
-      a {
-        color: #000000;
-        /* 设置链接颜色 */
-        text-decoration: none;
-        /* 移除下划线 */
-      }
+        /* Google Fonts - 一个更现代、更易读的字体 */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap');
 
-      a:hover {
-        color: #0056b3;
-        /* 鼠标悬停时的颜色 */
-        text-decoration: underline;
-        /* 鼠标悬停时添加下划线 */
-      }
+        /* 全局样式重置和基础设置 */
+        body {
+            margin: 0;
+            /* 移除默认边距 */
+            font-family: 'Noto Sans SC', sans-serif;
+            /* 应用更美观的中文字体 */
+            background-color: #f0f2f5;
+            /* 设置一个柔和的背景色 */
+            color: #333;
+            /* 设置基础字体颜色 */
+            line-height: 1.8;
+            /* 增加行高，提升可读性 */
+        }
 
-      a:active {
-        color: #2161a7;
-        /* 链接被点击时的颜色 */
-      }
+        /* 链接样式 */
+        a {
+            color: #1877f2;
+            /* 使用一个鲜明的蓝色作为链接颜色 */
+            text-decoration: none;
+            /* 默认移除下划线 */
+            font-weight: bold;
+            /* 加粗链接文字 */
+            transition: color 0.3s ease, text-decoration 0.3s ease;
+            /* 为颜色和下划线变化添加平滑过渡效果 */
+        }
 
-      .center {
-        text-align: center;
-      }
+        a:hover {
+            color: #0056b3;
+            /* 鼠标悬停时加深颜色 */
+            text-decoration: underline;
+            /* 悬停时显示下划线 */
+        }
 
-      .jzjc {
-        font-size: 15px;
-      }
+        a:active {
+            color: #2161a7;
+            /* 链接被点击时的颜色 */
+        }
+
+        /* 主容器样式，使用Flexbox实现垂直居中 */
+        .container {
+            display: flex;
+            flex-direction: column;
+            /* 子元素垂直排列 */
+            align-items: center;
+            /* 水平居中 */
+            justify-content: center;
+            /* 垂直居中 */
+            min-height: 100vh;
+            /* 容器最小高度为整个视口高度 */
+            padding: 20px;
+            /* 在容器周围添加内边距 */
+            box-sizing: border-box;
+            /* 让padding不影响容器的最终宽高 */
+        }
+
+        /* 内容卡片样式 */
+        .content-card {
+            background-color: #ffffff;
+            /* 白色背景 */
+            padding: 25px 30px;
+            /* 内边距 */
+            border-radius: 12px;
+            /* 圆角边框 */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            /* 添加柔和的阴影，营造立体感 */
+            text-align: center;
+            /* 内部文本居中 */
+            max-width: 800px;
+            /* 限制最大宽度，在大屏幕上也不会过宽 */
+            width: 100%;
+            /* 宽度自适应 */
+        }
+
+        /* Logo图片样式 */
+        .logo {
+            max-width: 250px;
+            /* 限制logo最大宽度 */
+            width: 100%;
+            /* 宽度自适应 */
+            height: auto;
+            /* 高度自动，防止图片变形 */
+            margin-bottom: 20px;
+            /* 与下方标题的间距 */
+        }
+
+        /* 主标题样式 */
+        h1 {
+            font-size: 2rem;
+            /* 调整字体大小 */
+            color: #1c1e21;
+            /* 深色字体 */
+            margin-bottom: 25px;
+        }
+
+        /* 副标题/公告内容样式 */
+        .announcement {
+            font-size: 1.1rem;
+            /* 调整字体大小 */
+            color: #555;
+            /* 使用柔和一些的字体颜色 */
+            margin-bottom: 20px;
+            /* 公告之间的间距 */
+            padding: 0 10px;
+            /* 左右留出一些空间，避免文字贴边 */
+        }
+
+        /* 用于突出显示姓名的特殊样式 */
+        .highlight-name {
+            color: #ff4d6d;
+            /* 使用一个醒目的粉红色 */
+            font-weight: 700;
+            /* 字体加粗 */
+        }
+
+        /* 分隔线样式 */
+        hr {
+            border: none;
+            height: 1px;
+            background-color: #e0e0e0;
+            margin: 30px 0;
+            /* 上下边距 */
+        }
+
+        /* 脚注/免责声明区域样式 */
+        .footer-section {
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        /* NFT信息区域样式 */
+        .nft-info {
+            background-color: #f9f9f9;
+            /* 一个浅灰色背景 */
+            border: 1px solid #ddd;
+            /* 细边框 */
+            border-radius: 8px;
+            /* 圆角 */
+            padding: 15px;
+            margin-top: 25px;
+            word-wrap: break-word;
+            /* 长字符串自动换行 */
+        }
+
+        .nft-info h2 {
+            font-size: 1.2rem;
+            color: #333;
+            margin-top: 0;
+        }
+
+        .nft-info p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 5px;
+        }
     </style>
-  </head>
+</head>
 
-  <body>
-    <!--logo图标-->
-    <div class="center">
-      <img src="./file/logo.png" alt="smiley face" width="300px" />
-    </div>
-    <!--正文-->
-    <div class="center">
-      <h1 class="center">欢迎来到耗子帮官网！</h1>
-      <br />
-      <h3 class="center">警告！前方高能撒糖！焦腾岳捕获野生范心舒一只，经鉴定为绝配，特此昭告天下，即日起开启“齁甜”模式，闲人勿扰！</h3>
-      <br />
-      <h3 class="center">紧急寻人启事：范心舒，你已被焦腾岳的心成功锁定，任何形式的逃脱均为无效。现通知你俩原地结婚，过期不候！</h3>
-      <br />
-      <h3 class="center">宇宙级狗粮预警！焦腾岳和范心舒这对CP已启动“天雷地火”模式，预计产生大量爱情正能量，请各位单身人士自带防闪光装备！</h3>
-      <br />
-      <h3 class="center">恭喜焦腾岳和范心舒解锁人生新副本——“永结同心”。系统提示：前方有无数甜蜜彩蛋和惊喜BOSS等待解锁，祝两位玩家游戏愉快！</h3>
-      <br />
-      <h3 class="center">听说最近民政局业绩暴涨，经秘密调查，幕后推手竟是焦腾岳和范心舒！他们用实际行动证明：爱，就是要一起行动！</h3>
-      <br />
-      <h2 class="center">本网站不对所展示的内容负责，信息来源与网络，请自行判断<br>如有侵权或其他问题，请通过<a href="https://www.privacyguardian.org">"这里"</a>与我们取得联系</h2>
-      <br />
-      <br />
-      <h2 class="center">另外，我们正在售卖“一只 祥子”（NFT）（全球限量十只的 祥子）</h2>
-      <h3 class="center">代币编号：72919872430888286201423972183842167005022180495373771952030894795597176373258</h3>
-      <h3 class="center">合约地址：0xa4205599032c4c67e359c5358a3e1023154c3251</h3>
-      <br />
-      <br />
+<body>
+    <!-- 主内容容器 -->
+    <div class="container">
+        <!-- 内容卡片 -->
+        <div class="content-card">
+            <!-- Logo图片 -->
+            <img src="./file/logo.png" alt="耗子帮 Logo" class="logo" />
 
-      <h3 class="center"><a href="jm/1062501/1062501.html">番外篇</a></h3>
+            <!-- 主标题 -->
+            <h1>欢迎来到耗子帮官网！</h1>
+
+            <!-- 甜蜜公告部分 -->
+            <p class="announcement">
+                警告！前方高能撒糖！<span class="highlight-name">焦腾岳</span>捕获野生<span class="highlight-name">范心舒</span>一只，经鉴定为绝配，特此昭告天下，即日起开启“齁甜”模式，闲人勿扰！
+            </p>
+            <p class="announcement">
+                紧急寻人启事：<span class="highlight-name">范心舒</span>，你已被<span class="highlight-name">焦腾岳</span>的心成功锁定，任何形式的逃脱均为无效。现通知你俩原地结婚，过期不候！
+            </p>
+            <p class="announcement">
+                宇宙级狗粮预警！<span class="highlight-name">焦腾岳</span>和<span class="highlight-name">范心舒</span>这对CP已启动“天雷地火”模式，预计产生大量爱情正能量，请各位单身人士自带防闪光装备！
+            </p>
+            <p class="announcement">
+                恭喜<span class="highlight-name">焦腾岳</span>和<span class="highlight-name">范心舒</span>解锁人生新副本——“永结同心”。系统提示：前方有无数甜蜜彩蛋和惊喜BOSS等待解锁，祝两位玩家游戏愉快！
+            </p>
+            <p class="announcement">
+                听说最近民政局业绩暴涨，经秘密调查，幕后推手竟是<span class="highlight-name">焦腾岳</span>和<span class="highlight-name">范心舒</span>！他们用实际行动证明：爱，就是要一起行动！
+            </p>
+
+            <!-- 分隔线 -->
+            <hr>
+
+            <!-- NFT销售信息 -->
+            <div class="nft-info">
+                <h2>正在售卖“一只 祥子”（NFT）</h2>
+                <p>（全球限量十只的 祥子）</p>
+                <p><strong>代币编号：</strong>72919872430888286201423972183842167005022180495373771952030894795597176373258</p>
+                <p><strong>合约地址：</strong>0xa4205599032c4c67e359c5358a3e1023154c3251</p>
+            </div>
+
+            <!-- 番外篇链接 -->
+            <h3><a href="jm/1062501/1062501.html">查看番外篇</a></h3>
+
+            <!-- 分隔线 -->
+            <hr>
+
+            <!-- 脚注与免责声明 -->
+            <div class="footer-section">
+                <p>本网站不对所展示的内容负责，信息来源于网络，请自行判断。<br>如有侵权或其他问题，请通过<a href="https://www.privacyguardian.org">"这里"</a>与我们取得联系。</p>
+            </div>
+        </div>
     </div>
-  </body>
+</body>
 </html>
 <!--不愿捐献器官声明
 “耗子”在任何时间任何情况下，都不会同意捐献自身任何器官，“耗子”没有在任何时候签字同意或口买向意捐献器官，在何声称或声明自己愿意捐献的证据文件，都是虚假不实或伪造，任何由他人拍摄的“耗子”同意捐献的视频证据，均系AI伪造，同时在就医时，会明确告知主治医师自己不愿捐献器管-->
