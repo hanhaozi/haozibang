@@ -271,8 +271,7 @@
             }
 
             // 2. 添加对输入内容的判断功能
-            // 定义不允许的关键词列表
-            var forbiddenWords = ['hz', 'hhc' 'jk'];
+            var forbiddenWords = ['hz', 'hhc'];
             // 将输入内容转换为小写以便进行不区分大小写的比较
             var lowerCaseNameA = nameA.toLowerCase();
             var lowerCaseNameB = nameB.toLowerCase();
@@ -280,26 +279,25 @@
             // 遍历关键词列表
             for (var i = 0; i < forbiddenWords.length; i++) {
                 var word = forbiddenWords[i];
-                // 检查男方或女方的名字中是否包含不允许的关键词
-                if (lowerCaseNameA.includes(word) || lowerCaseNameB.includes(word)) {
+                // 检查男方或女方的名字是否与不允许的关键词完全相等
+                if (lowerCaseNameA === word || lowerCaseNameB === word) {
                     alert('输入内容包含不支持的字符，请修改后重试。');
-                    return; // 如果找到关键词，则弹出提示并终止函数执行
+                    return; // 如果找到完全相等的关键词，则终止函数
                 }
             }
 
             // 3. 如果检查通过，则执行替换
-            // 获取所有需要替换的元素
             var nameAElements = document.querySelectorAll('.name-a');
             var nameBElements = document.querySelectorAll('.name-b');
 
             // 替换所有 name-a 的内容
-            for (var i = 0; i < nameAElements.length; i++) {
-                nameAElements[i].textContent = nameA;
+            for (var j = 0; j < nameAElements.length; j++) {
+                nameAElements[j].textContent = nameA;
             }
 
             // 替换所有 name-b 的内容
-            for (var i = 0; i < nameBElements.length; i++) {
-                nameBElements[i].textContent = nameB;
+            for (var k = 0; k < nameBElements.length; k++) {
+                nameBElements[k].textContent = nameB;
             }
 
             // 隐藏输入框和按钮
@@ -307,4 +305,4 @@
         }
     </script>
 </body>
-</html>
+</html>```
