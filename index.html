@@ -122,13 +122,17 @@
 
         /* 用于突出显示姓名的特殊样式 */
         .name-a {
-            color: #007bff; /* 鲜明的蓝色，代表男性 */
-            font-weight: 700; /* 字体加粗 */
+            color: #007bff;
+            /* 鲜明的蓝色，代表男性 */
+            font-weight: 700;
+            /* 字体加粗 */
         }
 
         .name-b {
-            color: #ff4d6d; /* 醒目的粉红色，代表女性 */
-            font-weight: 700; /* 字体加粗 */
+            color: #ff4d6d;
+            /* 醒目的粉红色，代表女性 */
+            font-weight: 700;
+            /* 字体加粗 */
         }
 
         /* 分隔线样式 */
@@ -171,6 +175,27 @@
             color: #666;
             margin-bottom: 5px;
         }
+
+        /* 新增的输入框和按钮样式 */
+        .input-container {
+            margin-bottom: 20px;
+        }
+
+        .input-container input {
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .input-container button {
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -181,6 +206,13 @@
         <div class="content-card">
             <!-- Logo图片 -->
             <img src="./file/logo.png" alt="耗子帮 Logo" class="logo" />
+
+            <!-- 新增的输入区域 -->
+            <div id="name-input-container" class="input-container">
+                <input type="text" id="name-a-input" placeholder="输入男方名字">
+                <input type="text" id="name-b-input" placeholder="输入女方名字">
+                <button onclick="replaceNames()">确定</button>
+            </div>
 
             <!-- 主标题 -->
             <h1>欢迎来到耗子帮官网！</h1>
@@ -219,5 +251,36 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function replaceNames() {
+            // 获取输入框的值
+            var nameA = document.getElementById('name-a-input').value;
+            var nameB = document.getElementById('name-b-input').value;
+
+            // 检查输入是否为空
+            if (nameA.trim() === '' || nameB.trim() === '') {
+                alert('请输入双方的名字！');
+                return;
+            }
+
+            // 获取所有需要替换的元素
+            var nameAElements = document.querySelectorAll('.name-a');
+            var nameBElements = document.querySelectorAll('.name-b');
+
+            // 替换所有 name-a 的内容
+            for (var i = 0; i < nameAElements.length; i++) {
+                nameAElements[i].textContent = nameA;
+            }
+
+            // 替换所有 name-b 的内容
+            for (var i = 0; i < nameBElements.length; i++) {
+                nameBElements[i].textContent = nameB;
+            }
+
+            // 隐藏输入框和按钮
+            document.getElementById('name-input-container').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
