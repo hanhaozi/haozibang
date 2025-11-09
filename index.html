@@ -176,7 +176,7 @@
             margin-bottom: 5px;
         }
 
-        /* 新增的输入框和按钮样式 */
+        /* 输入框和按钮样式 */
         .input-container {
             margin-bottom: 20px;
         }
@@ -186,6 +186,7 @@
             margin: 5px;
             border-radius: 5px;
             border: 1px solid #ccc;
+            width: 150px;
         }
 
         .input-container button {
@@ -195,6 +196,11 @@
             background-color: #007bff;
             color: white;
             cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .input-container button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
@@ -207,7 +213,7 @@
             <!-- Logo图片 -->
             <img src="./file/logo.png" alt="耗子帮 Logo" class="logo" />
 
-            <!-- 新增的输入区域 -->
+            <!-- 输入区域 -->
             <div id="name-input-container" class="input-container">
                 <input type="text" id="name-a-input" placeholder="输入男方名字">
                 <input type="text" id="name-b-input" placeholder="输入女方名字">
@@ -258,12 +264,30 @@
             var nameA = document.getElementById('name-a-input').value;
             var nameB = document.getElementById('name-b-input').value;
 
-            // 检查输入是否为空
+            // 1. 检查输入是否为空
             if (nameA.trim() === '' || nameB.trim() === '') {
                 alert('请输入双方的名字！');
                 return;
             }
 
+            // 2. 添加对输入内容的判断功能
+            // 定义不允许的关键词列表
+            var forbiddenWords = ['hz', 'hhc' '耗子','韩昊辰',];
+            // 将输入内容转换为小写以便进行不区分大小写的比较
+            var lowerCaseNameA = nameA.toLowerCase();
+            var lowerCaseNameB = nameB.toLowerCase();
+
+            // 遍历关键词列表
+            for (var i = 0; i < forbiddenWords.length; i++) {
+                var word = forbiddenWords[i];
+                // 检查男方或女方的名字中是否包含不允许的关键词
+                if (lowerCaseNameA.includes(word) || lowerCaseNameB.includes(word)) {
+                    alert('输入内容包含不支持的字符，请修改后重试。');
+                    return; // 如果找到关键词，则弹出提示并终止函数执行
+                }
+            }
+
+            // 3. 如果检查通过，则执行替换
             // 获取所有需要替换的元素
             var nameAElements = document.querySelectorAll('.name-a');
             var nameBElements = document.querySelectorAll('.name-b');
